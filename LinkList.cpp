@@ -144,3 +144,77 @@ int main() {
     return 0;
 }
 
+
+
+
+
+
+
+
+
+
+Reflection and Pseudocode Document
+Reflection:
+Purpose of the Code: The purpose of this code is to implement a singly linked list in C++ to manage a collection of bids. It includes functionality to append, prepend, print, remove, and search bids in the list.
+
+Techniques Implemented:
+Append: Adds a bid to the end of the list by adjusting the tail pointer.
+Prepend: Adds a bid to the front of the list by adjusting the head pointer.
+PrintList: Traverses the list and prints each bid.
+Remove: Removes a bid based on its ID by traversing the list and adjusting pointers to exclude the target node.
+Search: Traverses the list to find a bid by its ID and returns the bid if found.
+
+Challenges Encountered and Solutions:
+Initializer List Error: The initial code used initializer lists to create Bid objects, which caused compilation errors. This was resolved by explicitly setting each member of the Bid structure.
+Memory Management: Ensuring proper deletion of nodes to avoid memory leaks. This was managed by implementing a destructor that traverses the list and deletes each node.
+
+
+Pseudocode:
+Append(bid)
+Create a new node with the bid
+If head is null
+    Set head and tail to the new node
+Else
+    Set tail's next to the new node
+    Update tail to the new node
+
+Prepend(bid)
+Create a new node with the bid
+If head is null
+    Set head and tail to the new node
+Else
+    Set the new node's next to head
+    Update head to the new node
+
+PrintList()
+
+Start with the head node
+While current node is not null
+    Print the current node's bid details
+    Move to the next node
+
+Remove(bidId)
+
+Start with the head node and previous node as null
+While current node is not null
+    If current node's bidId matches
+        If previous node is null
+            Update head to current's next
+        Else
+            Set previous node's next to current's next
+        If current's next is null
+            Update tail to previous
+        Delete current node
+        Return
+    Move to the next node with previous set to current
+
+Search(bidId)
+
+Start with the head node
+While current node is not null
+    If current node's bidId matches
+        Return the current node's bid
+    Move to the next node
+Return an empty bid if not found
+
+
